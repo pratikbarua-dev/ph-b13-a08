@@ -101,7 +101,7 @@ export default function Navbar() {
             <Link
               href="/books"
               className={
-                pathname === "/books"
+                pathname.startsWith("/books")
                   ? "border-b-2 border-primary font-semibold rounded-none"
                   : ""
               }

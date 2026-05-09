@@ -1,20 +1,13 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import booksArray from "@/lib/data.json";
 import Image from "next/image";
 import Link from "next/link";
-export default function AllBooksPage() {
-  const [search, setSearch] = useState("");
-  const filteredBooks = booksArray.books.filter((book) => {
-    return book.title.toLowerCase().includes(search.toLowerCase());
-  });
-  console.log(filteredBooks, "filtered books");
-
-  // Categories as objects with id
+export default async function FilteredBooks({ params }) {
+  const { id } = await params;
   const categories = booksArray.categories;
-
   const books = booksArray.books;
+  const filteredBooks = books.filter((book) => book.category_id == id);
+  console.log(filteredBooks, "filtered books");
 
   return (
     <section className="min-h-screen bg-[#f5f5f5] px-6 py-10">
@@ -32,8 +25,6 @@ export default function AllBooksPage() {
             <input
               type="text"
               placeholder="Title, Author, ISBN..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
               className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#14143c]"
             />
           </div>
