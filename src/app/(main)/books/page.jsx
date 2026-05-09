@@ -82,10 +82,11 @@ export default function AllBooksPage() {
                   </h3>
 
                   <p className="text-gray-500 mt-2">{book.author}</p>
-
-                  <button className="w-full mt-6 bg-[#14143c] text-white py-3 rounded-xl hover:opacity-90 transition">
-                    Details
-                  </button>
+                  <Link href={`/books/details/${book.id}`}>
+                    <button className="w-full mt-6 bg-[#14143c] text-white py-3 rounded-xl hover:opacity-90 transition">
+                      Details
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))}

@@ -19,121 +19,158 @@
       "id": 1,
       "title": "Atomic Habits",
       "author": "James Clear",
-      "description": "A practical guide to building good habits and breaking bad ones.",
+      "publish_date": "2018-10-16",
+      "pages": 320,
+      "description": "Atomic Habits explains how tiny daily improvements can completely transform your life over time.\nThe book introduces the idea that habits are the compound interest of self-improvement.\nJames Clear shares practical systems instead of motivational speeches.\nIt teaches how environment design can make good habits easier to follow.\nThe author explains why identity-based habits are more powerful than goal-based habits.\nReaders learn the four laws of behavior change with real-life examples.\nThe book includes stories from athletes, artists, entrepreneurs, and scientists.\nIt shows how small bad habits can slowly damage productivity and confidence.\nThe writing style is simple, practical, and easy to apply immediately.\nAtomic Habits became one of the most influential self-development books worldwide.",
       "category_id": 3,
       "category": "Science",
       "available_quantity": 7,
-      "image_url": "https://m.media-amazon.com/images/I/91bYsX41DVL.jpg"
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/91bYsX41DVL.jpg"
     },
     {
       "id": 2,
       "title": "The Alchemist",
       "author": "Paulo Coelho",
-      "description": "A philosophical story about following your dreams and destiny.",
+      "publish_date": "1988-04-15",
+      "pages": 208,
+      "description": "The Alchemist follows a young shepherd named Santiago on a journey across deserts and distant lands.\nThe novel explores dreams, destiny, and the search for personal meaning.\nPaulo Coelho mixes philosophy with magical storytelling in a unique way.\nThe story teaches readers to listen to their hearts and trust their journey.\nSantiago meets mysterious mentors who guide him toward hidden treasure.\nThe desert setting creates a peaceful and spiritual atmosphere.\nMany readers consider the book life-changing because of its inspirational themes.\nThe novel discusses fear, love, courage, and the pursuit of happiness.\nIts simple language makes deep ideas easy to understand.\nThe Alchemist has been translated into dozens of languages worldwide.",
       "category_id": 1,
       "category": "Story",
       "available_quantity": 5,
-      "image_url": "https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg"
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/71aFt4+OTOL.jpg"
     },
     {
       "id": 3,
       "title": "Clean Code",
       "author": "Robert C. Martin",
-      "description": "A handbook of agile software craftsmanship for developers.",
+      "publish_date": "2008-08-01",
+      "pages": 464,
+      "description": "Clean Code teaches programmers how to write readable and maintainable software.\nRobert C. Martin explains why messy code becomes expensive over time.\nThe book includes real examples of bad code and how to improve it.\nDevelopers learn naming conventions, functions, classes, and testing practices.\nIt emphasizes simplicity and clarity instead of clever shortcuts.\nThe author shares principles used by professional software engineers.\nMany companies recommend this book to junior and senior developers alike.\nReaders discover how clean architecture improves teamwork and debugging.\nThe lessons apply to almost every programming language and framework.\nClean Code is considered a must-read book in software engineering.",
       "category_id": 2,
       "category": "Tech",
       "available_quantity": 8,
-      "image_url": "https://m.media-amazon.com/images/I/41SH-SvWPxL.jpg"
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/41SH-SvWPxL.jpg"
     },
+
     {
-      "id": 4,
-      "title": "Rich Dad Poor Dad",
-      "author": "Robert Kiyosaki",
-      "description": "A personal finance classic about wealth and financial literacy.",
+      "id": 13,
+      "title": "The Psychology of Money",
+      "author": "Morgan Housel",
+      "publish_date": "2020-09-08",
+      "pages": 256,
+      "description": "The Psychology of Money explores how emotions influence financial decisions.\nMorgan Housel explains that financial success is not only about intelligence.\nThe book discusses saving, investing, patience, and long-term thinking.\nReaders learn why behavior matters more than complex financial formulas.\nReal-world stories make the lessons practical and relatable.\nThe writing style is simple yet deeply insightful.\nThe book explains the power of compounding wealth over time.\nIt also highlights common mistakes people make with money.\nMany readers appreciate its realistic and balanced advice.\nThe Psychology of Money became a bestselling finance book worldwide.",
       "category_id": 3,
       "category": "Science",
       "available_quantity": 6,
-      "image_url": "https://m.media-amazon.com/images/I/81BE7eeKzAL.jpg"
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/71TRUbzcvaL.jpg"
     },
     {
-      "id": 5,
-      "title": "Harry Potter and the Sorcerer's Stone",
-      "author": "J.K. Rowling",
-      "description": "The magical beginning of Harry Potter’s journey at Hogwarts.",
+      "id": 14,
+      "title": "1984",
+      "author": "George Orwell",
+      "publish_date": "1949-06-08",
+      "pages": 328,
+      "description": "1984 presents a dystopian society controlled by surveillance and propaganda.\nGeorge Orwell explores themes of freedom, truth, and political control.\nThe story follows Winston Smith as he questions the ruling system.\nBig Brother became one of literature's most famous symbols.\nThe novel warns about the dangers of authoritarian governments.\nReaders experience fear, manipulation, and psychological pressure.\nThe writing remains powerful and relevant even decades later.\nMany modern discussions about privacy reference this novel.\n1984 is widely studied in schools and universities.\nIt is considered one of the greatest dystopian novels ever written.",
       "category_id": 1,
       "category": "Story",
-      "available_quantity": 10,
-      "image_url": "https://m.media-amazon.com/images/I/81iqZ2HHD-L.jpg"
-    },
-    {
-      "id": 6,
-      "title": "Deep Work",
-      "author": "Cal Newport",
-      "description": "Rules for focused success in a distracted world.",
-      "category_id": 3,
-      "category": "Science",
-      "available_quantity": 4,
-      "image_url": "https://m.media-amazon.com/images/I/71g2ednj0JL.jpg"
-    },
-    {
-      "id": 7,
-      "title": "The Pragmatic Programmer",
-      "author": "Andrew Hunt",
-      "description": "Essential programming practices and career advice for developers.",
-      "category_id": 2,
-      "category": "Tech",
-      "available_quantity": 5,
-      "image_url": "https://m.media-amazon.com/images/I/518FqJvR9aL.jpg"
-    },
-    {
-      "id": 8,
-      "title": "To Kill a Mockingbird",
-      "author": "Harper Lee",
-      "description": "A timeless novel about justice, morality, and humanity.",
-      "category_id": 1,
-      "category": "Story",
-      "available_quantity": 6,
-      "image_url": "https://m.media-amazon.com/images/I/81aY1lxk+9L.jpg"
-    },
-    {
-      "id": 9,
-      "title": "Introduction to Algorithms",
-      "author": "Thomas H. Cormen",
-      "description": "A comprehensive textbook on algorithms and data structures.",
-      "category_id": 2,
-      "category": "Tech",
-      "available_quantity": 3,
-      "image_url": "https://m.media-amazon.com/images/I/61Mw06x2XcL.jpg"
-    },
-    {
-      "id": 10,
-      "title": "Sapiens",
-      "author": "Yuval Noah Harari",
-      "description": "A brief history of humankind from ancient times to modern society.",
-      "category_id": 3,
-      "category": "Science",
-      "available_quantity": 9,
-      "image_url": "https://m.media-amazon.com/images/I/713jIoMO3UL.jpg"
-    },
-    {
-      "id": 11,
-      "title": "The Great Gatsby",
-      "author": "F. Scott Fitzgerald",
-      "description": "A classic American novel about wealth, love, and the Jazz Age.",
-      "category_id": 1,
-      "category": "Story",
-      "available_quantity": 4,
-      "image_url": "https://m.media-amazon.com/images/I/81TLiZrasVL.jpg"
-    },
-    {
-      "id": 12,
-      "title": "You Don't Know JS Yet",
-      "author": "Kyle Simpson",
-      "description": "An in-depth exploration of JavaScript fundamentals and advanced concepts.",
-      "category_id": 2,
-      "category": "Tech",
       "available_quantity": 7,
-      "image_url": "https://m.media-amazon.com/images/I/81kqrwS1nNL.jpg"
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/71kxa1-0mfL.jpg"
+    },
+    {
+      "id": 15,
+      "title": "Design Patterns",
+      "author": "Erich Gamma",
+      "publish_date": "1994-10-31",
+      "pages": 395,
+      "description": "Design Patterns introduces reusable solutions to common software problems.\nThe book was written by the famous Gang of Four authors.\nIt explains creational, structural, and behavioral design patterns.\nDevelopers learn how to create scalable and maintainable applications.\nThe examples are widely used in object-oriented programming.\nMany modern frameworks are influenced by these concepts.\nThe book improves software architecture understanding.\nReaders discover patterns like Singleton, Factory, and Observer.\nIt is highly respected in professional software engineering.\nDesign Patterns remains a classic programming reference book.",
+      "category_id": 2,
+      "category": "Tech",
+      "available_quantity": 4,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/81gtKoapHFL.jpg"
+    },
+    {
+      "id": 16,
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "publish_date": "1937-09-21",
+      "pages": 310,
+      "description": "The Hobbit follows Bilbo Baggins on a dangerous adventure.\nBilbo joins dwarves on a quest to reclaim lost treasure.\nThe journey includes dragons, trolls, elves, and magical discoveries.\nReaders experience the rich fantasy world of Middle-earth.\nThe story balances humor, adventure, and emotional moments.\nTolkien's world-building inspired modern fantasy literature.\nBilbo transforms from a quiet hobbit into a brave hero.\nThe book introduces the mysterious ring later seen in Lord of the Rings.\nIt remains popular among readers of all ages.\nThe Hobbit is one of the most beloved fantasy novels ever written.",
+      "category_id": 1,
+      "category": "Story",
+      "available_quantity": 9,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/91b0C2YNSrL.jpg"
+    },
+    {
+      "id": 17,
+      "title": "A Brief History of Time",
+      "author": "Stephen Hawking",
+      "publish_date": "1988-03-01",
+      "pages": 256,
+      "description": "A Brief History of Time explains complex ideas about the universe.\nStephen Hawking discusses black holes, time, gravity, and cosmology.\nThe book makes advanced science accessible to general readers.\nIt explores questions about the origin and future of the universe.\nReaders discover fascinating theories about space and time.\nHawking combines humor with scientific explanations.\nThe book inspired millions to become interested in physics.\nIt remains one of the best-selling science books ever.\nMany concepts challenge readers to think deeply about existence.\nA Brief History of Time became a global scientific phenomenon.",
+      "category_id": 3,
+      "category": "Science",
+      "available_quantity": 5,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/P/0553380168.01.L.jpg"
+    },
+    {
+      "id": 18,
+      "title": "Refactoring",
+      "author": "Martin Fowler",
+      "publish_date": "1999-07-08",
+      "pages": 448,
+      "description": "Refactoring teaches developers how to improve existing code safely.\nMartin Fowler explains techniques for restructuring software without changing behavior.\nThe book focuses on readability, maintainability, and code quality.\nReaders learn practical methods for cleaning complex systems.\nExamples demonstrate how small improvements create better software.\nThe book introduced the term refactoring to many programmers.\nIt emphasizes testing before modifying production code.\nMany professional developers rely on its principles daily.\nThe lessons are useful for both beginners and experienced engineers.\nRefactoring became a foundational book in modern software development.",
+      "category_id": 2,
+      "category": "Tech",
+      "available_quantity": 6,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/P/0201485672.01.L.jpg"
+    },
+    {
+      "id": 19,
+      "title": "The Silent Patient",
+      "author": "Alex Michaelides",
+      "publish_date": "2019-02-05",
+      "pages": 336,
+      "description": "The Silent Patient is a psychological thriller filled with suspense and mystery.\nThe story follows a woman who stops speaking after a shocking crime.\nA therapist becomes obsessed with uncovering the truth.\nThe novel slowly reveals hidden secrets and emotional trauma.\nReaders experience tension and unexpected twists throughout the story.\nThe writing style keeps audiences engaged until the final pages.\nMany readers praise its shocking ending.\nThe book became an international bestseller shortly after release.\nThemes of mental health and obsession are explored deeply.\nThe Silent Patient is considered a modern thriller favorite.",
+      "category_id": 1,
+      "category": "Story",
+      "available_quantity": 8,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/81JJPDNlxSL.jpg"
+    },
+    {
+      "id": 20,
+      "title": "Thinking, Fast and Slow",
+      "author": "Daniel Kahneman",
+      "publish_date": "2011-10-25",
+      "pages": 512,
+      "description": "Thinking, Fast and Slow explores how humans make decisions.\nDaniel Kahneman explains two systems of thinking in the brain.\nOne system is fast and emotional while the other is slow and logical.\nThe book examines cognitive biases and judgment errors.\nReaders discover why people often make irrational decisions.\nThe author shares decades of psychological research.\nExamples from business and everyday life make concepts relatable.\nThe book changed how many people understand human behavior.\nIt is widely respected in psychology and economics.\nThinking, Fast and Slow won global recognition for its insights.",
+      "category_id": 3,
+      "category": "Science",
+      "available_quantity": 4,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/71f6DceqZAL.jpg"
+    },
+    {
+      "id": 21,
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "publish_date": "1965-08-01",
+      "pages": 688,
+      "description": "Dune is an epic science fiction novel set on the desert planet Arrakis.\nThe story explores politics, religion, power, and survival.\nPaul Atreides becomes central to a dangerous conflict over spice production.\nThe world-building is detailed and imaginative.\nReaders encounter giant sandworms and futuristic societies.\nThe novel influenced countless science fiction stories and movies.\nThemes of destiny and leadership appear throughout the book.\nMany consider Dune one of the greatest sci-fi novels ever written.\nIts complex characters and philosophy make it deeply engaging.\nDune remains a timeless masterpiece of speculative fiction.",
+      "category_id": 1,
+      "category": "Story",
+      "available_quantity": 7,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/91uwocAMtSL.jpg"
+    },
+    {
+      "id": 22,
+      "title": "The Selfish Gene",
+      "author": "Richard Dawkins",
+      "publish_date": "1976-03-13",
+      "pages": 360,
+      "description": "The Selfish Gene explains evolution from the perspective of genes.\nRichard Dawkins presents scientific ideas in an engaging style.\nThe book introduced the concept of memes to popular culture.\nReaders learn how natural selection shapes living organisms.\nComplex biological theories are simplified for general audiences.\nThe writing encourages curiosity about evolution and genetics.\nMany scientists consider it highly influential in biology.\nThe book sparked debates about behavior and survival.\nIts ideas changed public understanding of evolutionary science.\nThe Selfish Gene remains a landmark science publication.",
+      "category_id": 3,
+      "category": "Science",
+      "available_quantity": 5,
+      "image_url": "https://images-na.ssl-images-amazon.com/images/P/0199291152.01.L.jpg"
     }
   ]
 }
