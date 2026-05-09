@@ -25,8 +25,6 @@ export default async function BookDetailsPage({ params }) {
           </Link>
 
           <span>|</span>
-
-          <span>{book.genre}</span>
         </div>
 
         {/* Main Content */}
