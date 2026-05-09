@@ -1,7 +1,39 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { authClient } from "@/lib/auth-client";
 import { FaGoogle } from "react-icons/fa";
+import { toast } from "react-toastify";
+
 export default function RegisterForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const regisHandler = async (data) => {
+    console.log(data);
+    const { name, email, password } = data;
+    const { data: result, error } = await authClient.signUp.email({
+      email,
+      password,
+      name,
+      // callbackURL: "/dashboard", // redirect after success
+    });
+    console.log(result, error);
+    if (error) {
+      // error can be a string like "Email already exists"
+      toast.error(error.message || error);
+      return;
+    }
+
+    // Success – you might show a toast and/or redirect
+    toast.success("Account created! Redirecting...");
+    // router.push("/dashboard")
+  };
+
   return (
     <section className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-6 py-10">
       <div className="w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-2">
@@ -70,46 +102,49 @@ export default function RegisterForm() {
           </div>
 
           {/* Form */}
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit(regisHandler)}>
             <div>
               <label className="block text-xs font-semibold uppercase text-gray-500 mb-2">
                 Full Name
               </label>
 
               <input
+                {...register("name", { required: "Full name is required" })}
                 type="text"
                 placeholder="Eleanor Vance"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#14143c]"
               />
             </div>
-
+            <p className="text-red-600">{errors.name?.message}</p>
             <div>
               <label className="block text-xs font-semibold uppercase text-gray-500 mb-2">
                 Email Address
               </label>
 
               <input
+                {...register("email", { required: "Email is required" })}
                 type="email"
                 placeholder="scholar@example.com"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#14143c]"
               />
             </div>
-
+            <p className="text-red-600">{errors.email?.message}</p>
             <div>
               <label className="block text-xs font-semibold uppercase text-gray-500 mb-2">
                 Password
               </label>
 
               <input
+                {...register("password", { required: "Password is required" })}
                 type="password"
                 placeholder="••••••••"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#14143c]"
               />
             </div>
-
+            <p className="text-red-600">{errors.password?.message}</p>
             <button
               type="submit"
-              className="w-full bg-[#14143c] hover:opacity-90 transition text-white py-3 rounded-xl font-semibold"
+              className="w-full hover:cursor-pointer bg-[#14143c] hover:opacity-90 transition text-white py-3 rounded-xl font-semibold"
             >
               CREATE ACCOUNT
             </button>
