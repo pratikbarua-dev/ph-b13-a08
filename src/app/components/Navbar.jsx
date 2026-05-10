@@ -1,12 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
+import { signOut, useSession } from "@/lib/auth-client";
 
 export default function Navbar() {
   const pathname = usePathname();
-
+  const router = useRouter();
+  const { data: session, isPending, error } = useSession();
+  const handleLogout = async () => {
+    await signOut();
+    router.push("/"); // or "/sign-in", wherever you want
+  };
   return (
     <div className="navbar bg-base-100 shadow-sm">
       {/* Left Side */}
@@ -127,7 +133,22 @@ export default function Navbar() {
 
       {/* Right Side */}
       <div className="navbar-end">
-        <button className="btn">Login</button>
+        {isPending ? (
+          <span className="loading loading-dots loading-xl"></span>
+        ) : session ? (
+          <div className="flex items-center gap-3">
+            <p>Hey, {session.user?.name || session.user?.email}!</p>
+            {/* Optional: show user name / email */}
+
+            <button onClick={handleLogout} className="btn btn-error">
+              Logout
+            </button>
+          </div>
+        ) : (
+          <Link href="/login" className="btn btn-success">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

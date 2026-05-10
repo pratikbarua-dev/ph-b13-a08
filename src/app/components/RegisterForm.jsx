@@ -2,17 +2,34 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { authClient } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 import { FaGoogle } from "react-icons/fa";
 import { toast } from "react-toastify";
 
+import { useRouter, redirect } from "next/navigation";
+import { error } from "better-auth/api";
+
 export default function RegisterForm() {
+  const { data: session, isPending, error } = useSession();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  const googleLoginHandler = async () => {
+    authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/home", // redirect after success
+    });
+    if (error) {
+      toast.error(error.message || error);
+      return;
+    }
+    toast.success("Sign In Successful! Redirecting...");
+    router.push("/home");
+  };
   const regisHandler = async (data) => {
     console.log(data);
     const { name, email, password } = data;
@@ -20,7 +37,7 @@ export default function RegisterForm() {
       email,
       password,
       name,
-      // callbackURL: "/dashboard", // redirect after success
+      callbackURL: "/login", // redirect after success
     });
     console.log(result, error);
     if (error) {
@@ -31,9 +48,18 @@ export default function RegisterForm() {
 
     // Success – you might show a toast and/or redirect
     toast.success("Account created! Redirecting...");
-    // router.push("/dashboard")
+    router.push("/login");
   };
-
+  if (isPending) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="loading loading-spinner text-primary"></span>
+      </div>
+    );
+  }
+  if (session) {
+    redirect("/home");
+  }
   return (
     <section className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-6 py-10">
       <div className="w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-2">
@@ -80,6 +106,7 @@ export default function RegisterForm() {
 
           {/* Google OAuth */}
           <button
+            onClick={googleLoginHandler}
             type="button"
             className="w-full border hover:cursor-pointer border-gray-300 rounded-xl py-3 flex items-center justify-center gap-3 hover:bg-gray-50 transition"
           >

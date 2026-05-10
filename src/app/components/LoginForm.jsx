@@ -2,17 +2,63 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { authClient, useSession } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { useRouter, redirect } from "next/navigation";
+
 import { FaGoogle } from "react-icons/fa";
 export default function RegisterForm() {
+  const router = useRouter();
+  const { data: session, isPending, error } = useSession();
+  const googleLoginHandler = async () => {
+    authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/home", // redirect after success
+    });
+    if (error) {
+      toast.error(error.message || error);
+      return;
+    }
+    toast.success("Sign In Successful! Redirecting...");
+    router.push("/home");
+  };
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const regisHandler = (data) => {
+  const regisHandler = async (data) => {
     console.log(data);
+    const { name, email, password } = data;
+
+    const { data: result, error } = await authClient.signIn.email({
+      email,
+      password,
+      name,
+      callbackURL: "/home", // redirect after success
+    });
+    console.log(result, error);
+    if (error) {
+      // error can be a string like "Email already exists"
+      toast.error(error.message || error);
+      return;
+    }
+
+    // Success – you might show a toast and/or redirect
+    toast.success("Sign In Successful! Redirecting...");
+    router.push("/home");
   };
+  if (isPending) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="loading loading-spinner text-primary"></span>
+      </div>
+    );
+  }
+  if (session) {
+    redirect("/home");
+  }
 
   return (
     <section className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-6 py-10">
@@ -67,7 +113,10 @@ export default function RegisterForm() {
               <FaGoogle />
             </span>
 
-            <span className="font-medium text-sm text-gray-700">
+            <span
+              onClick={googleLoginHandler}
+              className="font-medium text-sm text-gray-700"
+            >
               CONTINUE WITH GOOGLE
             </span>
           </button>
@@ -111,7 +160,7 @@ export default function RegisterForm() {
             <p className="text-red-600">{errors.password?.message}</p>
             <button
               type="submit"
-              className="w-full bg-[#14143c] hover:opacity-90 transition text-white py-3 rounded-xl font-semibold"
+              className="w-full hover:cursor-pointer bg-[#14143c] hover:opacity-90 transition text-white py-3 rounded-xl font-semibold"
             >
               Login
             </button>

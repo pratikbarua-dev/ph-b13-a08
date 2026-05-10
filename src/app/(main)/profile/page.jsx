@@ -1,16 +1,39 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { useSession } from "@/lib/auth-client";
+import { format } from "date-fns";
+import { useForm } from "react-hook-form";
+import { authClient } from "@/lib/auth-client";
 
 export default function ProfilePage() {
-  const user = {
-    name: "Eleanor Vance",
-    email: "eleanor.vance@example.com",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop",
-    memberSince: "Oct 2023",
-    activeLoans: 3,
-    profileUrl: "https://example.com/my-photo.jpg",
+  const { data: session, isPending, error } = useSession();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const updateHandler = async (data) => {
+    console.log("Updated Data:", data);
+    // Here you would typically send the updated data to your backend API
+    await authClient.updateUser({
+      image: data.image,
+      name: data.name,
+    });
   };
+  if (isPending) {
+    return <span className="loading loading-spinner text-primary"></span>;
+  }
+  if (!session) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p>User not logged in</p>
+      </div>
+    );
+  }
+  const user = session.user;
+
+  console.log(user);
 
   return (
     <section className="min-h-screen bg-[#f5f5f5] px-6 py-10">
@@ -39,15 +62,7 @@ export default function ProfilePage() {
               <span className="text-gray-500">Member Since</span>
 
               <span className="font-semibold text-[#14143c]">
-                {user.memberSince}
-              </span>
-            </div>
-
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">Active Loans</span>
-
-              <span className="bg-[#dce8d1] text-[#4d6634] px-3 py-1 rounded-full text-xs font-semibold">
-                {user.activeLoans} Books
+                {format(new Date(user.createdAt), "MMMM d, yyyy")}
               </span>
             </div>
           </div>
@@ -67,7 +82,7 @@ export default function ProfilePage() {
           </div>
 
           {/* Form */}
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit(updateHandler)} className="space-y-6">
             {/* Full Name */}
             <div>
               <label className="block text-sm font-medium text-gray-600 mb-2">
@@ -75,6 +90,7 @@ export default function ProfilePage() {
               </label>
 
               <input
+                {...register("name", { required: "Full name is required" })}
                 type="text"
                 defaultValue={user.name}
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#14143c]"
@@ -106,8 +122,11 @@ export default function ProfilePage() {
               </label>
 
               <input
+                {...register("image", {
+                  required: "Profile image URL is required",
+                })}
                 type="text"
-                defaultValue={user.profileUrl}
+                defaultValue={user.image}
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#14143c]"
               />
             </div>
@@ -116,16 +135,9 @@ export default function ProfilePage() {
             <div className="flex items-center gap-4 pt-4">
               <button
                 type="submit"
-                className="bg-[#14143c] text-white px-6 py-3 rounded-xl hover:opacity-90 transition font-medium"
+                className="bg-[#14143c] hover:cursor-pointer text-white px-6 py-3 rounded-xl hover:opacity-90 transition font-medium"
               >
                 Update Information
-              </button>
-
-              <button
-                type="button"
-                className="bg-gray-100 text-gray-700 px-6 py-3 rounded-xl hover:bg-gray-200 transition font-medium"
-              >
-                Cancel
               </button>
             </div>
           </form>

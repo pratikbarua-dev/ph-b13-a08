@@ -39,7 +39,7 @@ export default async function BookDetailsPage({ params }) {
                   alt={book.title}
                   width={500}
                   height={700}
-                  className="w-full h-[520px] object-cover rounded-xl"
+                  className="w-full h-130 object-cover rounded-xl"
                 />
 
                 <span className="absolute top-4 right-4 bg-[#dce8d1] text-[#4d6634] text-xs px-3 py-1 rounded-full font-medium">
@@ -97,7 +97,7 @@ export default async function BookDetailsPage({ params }) {
 
               {/* Quote */}
               <p className="text-gray=500 leading=8 mt=6 italic">
-                "{book.quote}"
+                &quot;{book.quote}&quot;
               </p>
             </div>
 
