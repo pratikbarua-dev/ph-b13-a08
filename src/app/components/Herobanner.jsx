@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function HeroBanner() {
   return (
     <div className="w-full flex items-center justify-center bg-[#f3f4f6] p-6">
@@ -21,10 +23,12 @@ export default function HeroBanner() {
             for the modern scholar.
           </p>
 
-          <button className="mt-8 flex items-center gap-3 rounded-xl bg-[#7d8f4f] px-6 py-4 text-white font-semibold transition hover:scale-105">
-            Browse Now
-            <span className="text-2xl">→</span>
-          </button>
+          <Link href="/books">
+            <button className="mt-8 hover:cursor-pointer flex items-center gap-3 rounded-xl bg-[#7d8f4f] px-6 py-4 text-white font-semibold transition hover:scale-105">
+              Browse Now
+              <span className="text-2xl">→</span>
+            </button>
+          </Link>
         </div>
       </div>
     </div>

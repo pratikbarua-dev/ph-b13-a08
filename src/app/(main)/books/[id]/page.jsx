@@ -1,19 +1,15 @@
-"use client";
 import React from "react";
 import booksArray from "@/lib/data.json";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function FilteredBooks({ params }) {
- 
-  const { id } = params;
+export default async function FilteredBooks({ params }) {
+  const { id } = await params;
   const categories = booksArray.categories;
   const books = booksArray.books;
   const filteredBooks = books.filter((book) => book.category_id == id);
   console.log(filteredBooks, "filtered books");
-  
 
-  console.log(session, "session data");
   return (
     <section className="min-h-screen bg-[#f5f5f5] px-6 py-10">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
@@ -43,7 +39,7 @@ export default function FilteredBooks({ params }) {
             <div className="flex flex-col gap-3">
               {categories.map((category) => (
                 <Link href={`/books/${category.id}`} key={category.id}>
-                  <button className="w-full text-left px-4 py-3 rounded-xl bg-[#f5f5f5] hover:bg-[#14143c] hover:text-white transition font-medium text-sm">
+                  <button className="w-full hover:cursor-pointer text-left px-4 py-3 rounded-xl bg-[#f5f5f5] hover:bg-[#14143c] hover:text-white transition font-medium text-sm">
                     {category.name}
                   </button>
                 </Link>
@@ -79,7 +75,7 @@ export default function FilteredBooks({ params }) {
 
                   <p className="text-gray-500 mt-2">{book.author}</p>
 
-                  <button className="w-full mt-6 bg-[#14143c] text-white py-3 rounded-xl hover:opacity-90 transition">
+                  <button className="w-full hover:cursor-pointer mt-6 bg-[#14143c] text-white py-3 rounded-xl hover:opacity-90 transition">
                     Details
                   </button>
                 </div>

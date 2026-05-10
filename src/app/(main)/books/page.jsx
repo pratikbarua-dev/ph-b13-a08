@@ -83,7 +83,7 @@ export default function AllBooksPage() {
 
                   <p className="text-gray-500 mt-2">{book.author}</p>
                   <Link href={`/books/details/${book.id}`}>
-                    <button className="w-full mt-6 bg-[#14143c] text-white py-3 rounded-xl hover:opacity-90 transition">
+                    <button className="w-full hover:cursor-pointer mt-6 bg-[#14143c] text-white py-3 rounded-xl hover:opacity-90 transition">
                       Details
                     </button>
                   </Link>

@@ -5,8 +5,11 @@ import { useSession } from "@/lib/auth-client";
 import { format } from "date-fns";
 import { useForm } from "react-hook-form";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function ProfilePage() {
+  const router = useRouter();
   const { data: session, isPending, error } = useSession();
   const {
     register,
@@ -21,19 +24,24 @@ export default function ProfilePage() {
       name: data.name,
     });
   };
+  useEffect(() => {
+    if (!isPending && !session) {
+      router.push("/login");
+    }
+  }, [session, isPending, router]);
+
+  // Loading state
   if (isPending) {
-    return <span className="loading loading-spinner text-primary"></span>;
-  }
-  if (!session) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p>User not logged in</p>
+        <span className="loading loading-dots loading-xl"></span>
       </div>
     );
   }
-  const user = session.user;
+  if (!session) return null;
+  const user = session?.user;
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <section className="min-h-screen bg-[#f5f5f5] px-6 py-10">

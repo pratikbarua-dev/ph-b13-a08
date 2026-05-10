@@ -8,6 +8,7 @@ import BorrowButton from "@/app/components/BorrowButton";
 import { useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+
 export default function BookDetailsPage({ params }) {
   const resolvedParams = React.use(params);
   const { id } = resolvedParams;

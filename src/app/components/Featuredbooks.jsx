@@ -1,5 +1,6 @@
 import booksList from "@/lib/data.json";
 import Image from "next/image";
+import Link from "next/link";
 export function FeaturedBooks() {
   const books = booksList.books.slice(0, 8); // Get the first 8 books for the featured section
 
@@ -69,9 +70,11 @@ function BookCard({ book }) {
         <p className="mt-1 text-sm text-gray-500">{book.author}</p>
 
         {/* Push button to bottom */}
-        <button className="mt-auto rounded-lg bg-[#f2f2f2] py-3 text-sm font-medium text-[#14143c] transition hover:bg-[#14143c] hover:text-white">
-          View Details
-        </button>
+        <Link href={`/books/details/${book.id}`}>
+          <button className="w-full hover:cursor-pointer mt-6 bg-[#14143c] text-white py-3 rounded-xl hover:opacity-90 transition">
+            Details
+          </button>
+        </Link>
       </div>
     </div>
   );
