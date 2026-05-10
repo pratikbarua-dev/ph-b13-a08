@@ -1,16 +1,37 @@
-"use server";
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import booksArray from "@/lib/data.json";
 import { format } from "date-fns";
 import BorrowButton from "@/app/components/BorrowButton";
-export default async function BookDetailsPage({ params }) {
-  const { id } = await params;
+import { useSession } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+export default function BookDetailsPage({ params }) {
+  const resolvedParams = React.use(params);
+  const { id } = resolvedParams;
+  const router = useRouter();
 
+  const { data, isPending, error } = useSession();
+  const session = data?.user;
+  useEffect(() => {
+    if (!isPending && !session) {
+      router.push("/login");
+    }
+  }, [session, isPending, router]);
+
+  // Loading state
+  if (isPending) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
+    );
+  }
   const book = booksArray.books.find((b) => b.id == id);
   console.log(book, "book details");
-  const date = new Date(book.publish_date);
+  const date = new Date(book?.publish_date);
   if (!book) {
     return <div>Book not found</div>;
   }

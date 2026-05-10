@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { authClient, useSession } from "@/lib/auth-client";
 import { toast } from "react-toastify";
-import { useRouter, redirect } from "next/navigation";
-
+import { useRouter } from "next/navigation";
 import { FaGoogle } from "react-icons/fa";
+import { useEffect } from "react";
 export default function RegisterForm() {
   const router = useRouter();
   const { data: session, isPending, error } = useSession();
@@ -20,7 +20,6 @@ export default function RegisterForm() {
       return;
     }
     toast.success("Sign In Successful! Redirecting...");
-    router.push("/home");
   };
   const {
     register,
@@ -49,15 +48,18 @@ export default function RegisterForm() {
     toast.success("Sign In Successful! Redirecting...");
     router.push("/home");
   };
+  useEffect(() => {
+    if (session) {
+      router.push("/home");
+    }
+  }, [session, router]);
+
   if (isPending) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <span className="loading loading-spinner text-primary"></span>
       </div>
     );
-  }
-  if (session) {
-    redirect("/home");
   }
 
   return (

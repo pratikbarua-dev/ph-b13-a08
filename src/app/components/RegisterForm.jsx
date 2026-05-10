@@ -7,7 +7,6 @@ import { FaGoogle } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 import { useRouter, redirect } from "next/navigation";
-import { error } from "better-auth/api";
 
 export default function RegisterForm() {
   const { data: session, isPending, error } = useSession();
@@ -28,7 +27,6 @@ export default function RegisterForm() {
       return;
     }
     toast.success("Sign In Successful! Redirecting...");
-    router.push("/home");
   };
   const regisHandler = async (data) => {
     console.log(data);

@@ -1,14 +1,19 @@
+"use client";
 import React from "react";
 import booksArray from "@/lib/data.json";
 import Image from "next/image";
 import Link from "next/link";
-export default async function FilteredBooks({ params }) {
-  const { id } = await params;
+
+export default function FilteredBooks({ params }) {
+ 
+  const { id } = params;
   const categories = booksArray.categories;
   const books = booksArray.books;
   const filteredBooks = books.filter((book) => book.category_id == id);
   console.log(filteredBooks, "filtered books");
+  
 
+  console.log(session, "session data");
   return (
     <section className="min-h-screen bg-[#f5f5f5] px-6 py-10">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
