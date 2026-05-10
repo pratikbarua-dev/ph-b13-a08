@@ -19,7 +19,6 @@ export default function RegisterForm() {
       toast.error(error.message || error);
       return;
     }
-    toast.success("Sign In Successful! Redirecting...");
   };
   const {
     register,

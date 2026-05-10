@@ -26,7 +26,7 @@ export default function RegisterForm() {
       toast.error(error.message || error);
       return;
     }
-    toast.success("Sign In Successful! Redirecting...");
+    
   };
   const regisHandler = async (data) => {
     console.log(data);
@@ -43,11 +43,12 @@ export default function RegisterForm() {
       // error can be a string like "Email already exists"
       toast.error(error.message || error);
       return;
+    } else {
+      toast.success("Account created! Redirecting...");
+      router.push("/login");
     }
 
     // Success – you might show a toast and/or redirect
-    toast.success("Account created! Redirecting...");
-    router.push("/login");
   };
   if (isPending) {
     return (
