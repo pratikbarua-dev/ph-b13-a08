@@ -1,37 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PH-B13-A08: Next.js Library Management System
+
+A modern, full-stack library management system built with Next.js 14, featuring authentication, book browsing, borrowing, and user profile management. This project demonstrates best practices in React, Next.js App Router, and modular component design.
+
+## Features
+
+- User authentication (login/register)
+- Browse, search, and view book details
+- Borrow books with a single click
+- User profile management
+- Responsive, modern UI
+- Modular, reusable React components
+
+## Project Structure
+
+```
+src/
+  app/
+	 (auth)/         # Authentication pages (login, register)
+	 (main)/         # Main app pages (books, home, profile)
+	 api/            # API routes (auth)
+	 components/     # Reusable UI components
+	 lib/            # Utility libraries and data
+public/             # Static assets
+```
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
+   ```zsh
+   npm install
+   ```
+2. **Run the development server:**
+   ```zsh
+   npm run dev
+   ```
+3. **Open your browser:**
+   Visit [http://localhost:3000](http://localhost:3000)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Scripts
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `npm run dev` — Start development server
+- `npm run build` — Build for production
+- `npm start` — Start production server
+- `npm run lint` — Run ESLint
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Next.js 14](https://nextjs.org/)
+- React 18+
+- CSS Modules / Tailwind CSS (if used)
+- Node.js
 
-## Learn More
+## Folder Highlights
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app/(auth)/` — Login and registration pages
+- `src/app/(main)/books/` — Book listing and details
+- `src/app/components/` — Navbar, Footer, Forms, etc.
+- `src/app/api/` — API route handlers
+- `src/app/lib/` — Auth logic and data
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Customization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Add new components in `src/app/components/`
+- Update book data in `src/app/lib/data.json`
+- Modify authentication logic in `src/app/lib/auth.js`
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# ph-b13-a08
+This project is for educational purposes. Feel free to use and modify for your own learning!
