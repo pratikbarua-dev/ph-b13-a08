@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "animate.css";
 
 export default function HeroBanner() {
   return (
@@ -13,7 +14,7 @@ export default function HeroBanner() {
         }}
       >
         <div className="max-w-xl">
-          <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+          <h1 className="animate__animated animate__fadeInLeft text-4xl md:text-6xl font-bold text-white leading-tight">
             Find Your Next <br /> Read
           </h1>
 

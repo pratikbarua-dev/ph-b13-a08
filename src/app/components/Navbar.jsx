@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { signOut, useSession } from "@/lib/auth-client";
 
+
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
@@ -82,7 +83,10 @@ export default function Navbar() {
         </div>
 
         {/* Logo */}
-        <Link href="/" className="btn btn-ghost text-xl">
+        <Link
+          href="/"
+          className=" btn btn-ghost text-xl"
+        >
           Lumina Library
         </Link>
       </div>
