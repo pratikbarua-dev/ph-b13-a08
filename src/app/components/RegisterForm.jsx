@@ -30,11 +30,12 @@ export default function RegisterForm() {
   };
   const regisHandler = async (data) => {
     console.log(data);
-    const { name, email, password } = data;
+    const { name, email, password, image } = data;
     const { data: result, error } = await authClient.signUp.email({
       email,
       password,
       name,
+      image,
       callbackURL: "/login", // redirect after success
     });
     console.log(result, error);
@@ -167,6 +168,19 @@ export default function RegisterForm() {
               />
             </div>
             <p className="text-red-600">{errors.password?.message}</p>
+            <div>
+              <label className="block text-xs font-semibold uppercase text-gray-500 mb-2">
+                Photo URL
+              </label>
+
+              <input
+                {...register("image", { required: "Photo URL is required" })}
+                type="text"
+                placeholder="https://example.com/photo.jpg"
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#14143c]"
+              />
+            </div>
+            <p className="text-red-600">{errors.image?.message}</p>
             <button
               type="submit"
               className="w-full hover:cursor-pointer bg-[#14143c] hover:opacity-90 transition text-white py-3 rounded-xl font-semibold"

@@ -18,10 +18,11 @@ export function FeaturedBooks() {
               Curated selections for the inquisitive mind.
             </p>
           </div>
-
-          <button className="text-sm font-medium text-[#14143c] hover:underline">
-            View All →
-          </button>
+          <Link href="/books">
+            <button className="text-sm hover:cursor-pointer font-medium text-[#14143c] hover:underline">
+              View All →
+            </button>
+          </Link>
         </div>
 
         {/* Cards */}

@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-2 lg:grid-cols-4">
         {/* Brand */}
         <div>
-          <h2 className="text-2xl font-bold">Book Haven</h2>
+          <h2 className="text-2xl font-bold">Lumina Library</h2>
 
           <p className="mt-4 text-sm leading-7 text-gray-300">
             Discover, borrow, and explore books from different genres with a
