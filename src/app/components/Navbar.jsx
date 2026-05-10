@@ -137,9 +137,10 @@ export default function Navbar() {
           <span className="loading loading-dots loading-xl"></span>
         ) : session ? (
           <div className="flex items-center gap-3">
-            <p className="hidden md:block">
-              Hey, {session.user?.name || session.user?.email}!
-            </p>
+            <div className="hidden md:block">
+              <p>Hey, {session.user?.name || session.user?.email}!</p>
+            </div>
+
             {/* Optional: show user name / email */}
 
             <button onClick={handleLogout} className="btn btn-error">
