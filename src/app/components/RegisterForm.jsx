@@ -1,55 +1,68 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { authClient, useSession } from "@/lib/auth-client";
 import { FaGoogle } from "react-icons/fa";
 import { toast } from "react-toastify";
-
-import { useRouter, redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
-  const { data: session, isPending, error } = useSession();
+  const { data: session, isPending } = useSession();
   const router = useRouter();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const googleLoginHandler = async () => {
-    authClient.signIn.social({
-      provider: "google",
-      callbackURL: "/home", // redirect after success
-    });
-    if (error) {
-      toast.error(error.message || error);
-      return;
+  // Redirect logged in users
+  useEffect(() => {
+    if (session) {
+      router.push("/home");
     }
-    
+  }, [session, router]);
+
+  // Google Login
+  const googleLoginHandler = async () => {
+    const { error } = await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/home",
+    });
+
+    if (error) {
+      toast.error(error.message || "Google login failed");
+    }
   };
+
+  // Register Handler
   const regisHandler = async (data) => {
-    console.log(data);
     const { name, email, password, image } = data;
-    const { data: result, error } = await authClient.signUp.email({
+
+    const { error } = await authClient.signUp.email({
       email,
       password,
       name,
       image,
-      callbackURL: "/login", // redirect after success
     });
-    console.log(result, error);
+
     if (error) {
-      // error can be a string like "Email already exists"
-      toast.error(error.message || error);
+      toast.error(error.message || "Registration failed");
       return;
-    } else {
-      toast.success("Account created! Redirecting...");
-      router.push("/login");
     }
 
-    // Success – you might show a toast and/or redirect
+    // Logout immediately after signup
+    await authClient.signOut();
+
+    toast.success("Account created! Please login.");
+
+    router.push("/login");
   };
+
+  // Loading Spinner
   if (isPending) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -57,9 +70,7 @@ export default function RegisterForm() {
       </div>
     );
   }
-  if (session) {
-    redirect("/home");
-  }
+
   return (
     <section className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-6 py-10">
       <div className="w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-2">
@@ -130,58 +141,79 @@ export default function RegisterForm() {
 
           {/* Form */}
           <form className="space-y-6" onSubmit={handleSubmit(regisHandler)}>
+            {/* Name */}
             <div>
               <label className="block text-xs font-semibold uppercase text-gray-500 mb-2">
                 Full Name
               </label>
 
               <input
-                {...register("name", { required: "Full name is required" })}
+                {...register("name", {
+                  required: "Full name is required",
+                })}
                 type="text"
                 placeholder="Eleanor Vance"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#14143c]"
               />
+
+              <p className="text-red-600 mt-1">{errors.name?.message}</p>
             </div>
-            <p className="text-red-600">{errors.name?.message}</p>
+
+            {/* Email */}
             <div>
               <label className="block text-xs font-semibold uppercase text-gray-500 mb-2">
                 Email Address
               </label>
 
               <input
-                {...register("email", { required: "Email is required" })}
+                {...register("email", {
+                  required: "Email is required",
+                })}
                 type="email"
                 placeholder="scholar@example.com"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#14143c]"
               />
+
+              <p className="text-red-600 mt-1">{errors.email?.message}</p>
             </div>
-            <p className="text-red-600">{errors.email?.message}</p>
+
+            {/* Password */}
             <div>
               <label className="block text-xs font-semibold uppercase text-gray-500 mb-2">
                 Password
               </label>
 
               <input
-                {...register("password", { required: "Password is required" })}
+                {...register("password", {
+                  required: "Password is required",
+                })}
                 type="password"
                 placeholder="••••••••"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#14143c]"
               />
+
+              <p className="text-red-600 mt-1">{errors.password?.message}</p>
             </div>
-            <p className="text-red-600">{errors.password?.message}</p>
+
+            {/* Photo URL */}
             <div>
               <label className="block text-xs font-semibold uppercase text-gray-500 mb-2">
                 Photo URL
               </label>
 
               <input
-                {...register("image", { required: "Photo URL is required" })}
+                {...register("image", {
+                  required: "Photo URL is required",
+                })}
                 type="text"
                 placeholder="https://example.com/photo.jpg"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-[#14143c]"
               />
+
+              <p className="text-red-600 mt-1">{errors.image?.message}</p>
             </div>
-            <p className="text-red-600">{errors.image?.message}</p>
+
+            {/* Submit */}
             <button
               type="submit"
               className="w-full hover:cursor-pointer bg-[#14143c] hover:opacity-90 transition text-white py-3 rounded-xl font-semibold"
